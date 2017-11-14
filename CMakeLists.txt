@@ -2,6 +2,11 @@ cmake_minimum_required(VERSION 3.9)
 project(cmg VERSION 0.0.1 DESCRIPTION "Chess Move Generator written in C++17")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+if(MSVC)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++17")
+endif(MSVC)
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/builds")
 
 # Set compiler flags
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -Wall -Wextra -fPIC")
@@ -19,7 +24,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -Wno-unused-variable -O3 -flto -
 if (${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
     # External project file headers
     # set(cmg_BENCHMARK_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/external/benchmark/include")
-    set(cmg_CATCH_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/external/Catch2/include")
+    include_directories("${CMAKE_CURRENT_SOURCE_DIR}/external/Catch2/single_include")
 
     add_subdirectory(external)
 endif()
