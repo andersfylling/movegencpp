@@ -1,5 +1,7 @@
 #pragma once
 
+#include "cmg/consts.h"
+
 namespace cmg {
 using consts::FLAG_SPECIAL0;
 using consts::FLAG_SPECIAL1;
@@ -11,6 +13,7 @@ using consts::RANGE_FROM;
 
 class Move
 {
+ public:
   constexpr Move(const uint_fast8_t from, const uint_fast8_t to, const uint_fast8_t flags)
       : move(((flags & 0xf)<<12) | ((from & 0x3f)<<6) | (to & 0x3f))
   {}
@@ -19,11 +22,15 @@ class Move
   {}
   constexpr void operator=(Move m)
   {
-    this->move = m;
+    this->move = m.getMove();
   }
   constexpr void setMove(const uint_fast16_t m)
   {
     this->move = m;
+  }
+  constexpr void setMove(const Move m)
+  {
+    this->move = m.getMove();
   }
   
   constexpr uint_fast8_t getTo() const
@@ -32,11 +39,11 @@ class Move
   }
   constexpr uint_fast8_t getFrom() const
   {
-    return this->move & RANGE_FROM;
+    return (this->move & RANGE_FROM) >> 6;
   }
   constexpr uint_fast8_t getFlags() const
   {
-    return this->move & RANGE_FLAG;
+    return (this->move & RANGE_FLAG) >> 12;
   }
   constexpr uint_fast16_t getMove() const
   {
@@ -46,18 +53,18 @@ class Move
   
   constexpr void setTo(const uint_fast8_t to)
   {
-    this->move &= ~constant::RANGE_TO;
+    this->move &= ~RANGE_TO;
     this->move |= to & RANGE_TO;
   }
   constexpr void setFrom(const uint_fast8_t from)
   {
     this->move &= ~RANGE_FROM;
-    this->move |= from & RANGE_FROM;
+    this->move |= (from << 6) & RANGE_FROM; // why isn't from here just rendered [0, 3]?
   }
   constexpr void setFlags(const uint_fast8_t flags)
   {
     this->move &= ~RANGE_FLAG;
-    this->move |= flags & RANGE_FLAG;
+    this->move |= (flags << 12) & RANGE_FLAG;
   }
   
   constexpr bool hasPromotion() const
@@ -159,6 +166,6 @@ class Move
   }
  
  private:
-  constexpr uint_fast16_t move;
+  uint_fast16_t move;
 };
 }
