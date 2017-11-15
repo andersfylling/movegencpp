@@ -1,5 +1,10 @@
+#include "catch.hpp"
+
+#include "cmg/MoveGen.h"
+
 #include <vector>
 #include <string>
+#include <iostream>
 
 #ifdef LOL_MEMES_NO
 
@@ -231,3 +236,17 @@ void validateMoveGen() {
 }
 
 #endif
+
+
+
+TEST_CASE("Iterator pattern", "[MoveGen]") {
+  constexpr bool white = true;
+  constexpr bool black = false;
+  
+  cmg::MoveGen<white> moveGen{};
+  
+  int i = 0;
+  for (auto move : moveGen) {
+    REQUIRE(move == i++);
+  }
+}

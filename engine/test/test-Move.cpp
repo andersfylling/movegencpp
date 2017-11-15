@@ -138,10 +138,8 @@ TEST_CASE("Attacks", "[Move]") {
   // ep-capture
   move.setFlags(i++); // 5
   REQUIRE(move.isEPCapture());
-  
-  // un used move types
-  i++; // 6
-  i++; // 7
+  // 6 and 7 isn't used by chessprogramming.com
+  i += 2;
   
   // knight-promotion
   move.setFlags(i++);
@@ -174,6 +172,14 @@ TEST_CASE("Attacks", "[Move]") {
   // queen-promo capture
   move.setFlags(i++);
   REQUIRE(move.isQueenPromoCapture());
+  
+  // custom flags
+  
+  // ep move
+  move.setFlags(6);
+  REQUIRE(move.isEPMove());
+  
+  // check
+  move.setFlags(7);
+  REQUIRE(move.isCheck()); // when the moving piece has caused a check
 }
-
-// TODO, attacks, special moves, etc.
