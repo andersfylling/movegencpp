@@ -103,3 +103,77 @@ TEST_CASE("Check comparisons", "[Move]") {
   m2.setMove(move.getMove());
   REQUIRE(m2 == move);
 }
+
+TEST_CASE("Attacks", "[Move]") {
+  cmg::Move move{0};
+  
+  // check all flags
+  for(int i = 0; i <= 15; i++) {
+    move.setFlags(i);
+    REQUIRE(move.getFlags() == i);
+  }
+  
+  int i = 0;
+  
+  // quiet move
+  move.setFlags(i++);
+  REQUIRE(move.isQuietMoves());
+  
+  // double pawn push
+  move.setFlags(i++);
+  REQUIRE(move.isDoublePawnPush());
+  
+  // king castle
+  move.setFlags(i++);
+  REQUIRE(move.isKingCastle());
+  
+  // queen castle
+  move.setFlags(i++);
+  REQUIRE(move.isQueenCastle());
+  
+  // captures
+  move.setFlags(i++);
+  REQUIRE(move.hasCapture());
+  
+  // ep-capture
+  move.setFlags(i++); // 5
+  REQUIRE(move.isEPCapture());
+  
+  // un used move types
+  i++; // 6
+  i++; // 7
+  
+  // knight-promotion
+  move.setFlags(i++);
+  REQUIRE(move.isKnightPromotion());
+  
+  // bishop-promotion
+  move.setFlags(i++);
+  REQUIRE(move.isBishopPromotion());
+  
+  // rook-promotion
+  move.setFlags(i++);
+  REQUIRE(move.isRookPromotion());
+  
+  // queen-promotion
+  move.setFlags(i++);
+  REQUIRE(move.isQueenPromotion());
+  
+  // knight-promo capture
+  move.setFlags(i++);
+  REQUIRE(move.isKnightPromoCapture());
+  
+  // bishop-promo capture
+  move.setFlags(i++);
+  REQUIRE(move.isBishopPromoCapture());
+  
+  // rook-promo capture
+  move.setFlags(i++);
+  REQUIRE(move.isRookPromoCapture());
+  
+  // queen-promo capture
+  move.setFlags(i++);
+  REQUIRE(move.isQueenPromoCapture());
+}
+
+// TODO, attacks, special moves, etc.
