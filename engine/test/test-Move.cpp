@@ -175,10 +175,6 @@ TEST_CASE("Attacks", "[Move]") {
   
   // custom flags
   
-  // ep move
-  move.setFlags(6);
-  REQUIRE(move.isEPMove());
-  
   // check
   move.setFlags(7);
   REQUIRE(move.isCheck()); // when the moving piece has caused a check

@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="CatchSelfTest"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\external\;CMake Files\external\Catch2\;CMake Files\engine\;CMake Files\engine\src\;CMake Files\engine\test\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/anders/CLionProjects/untitled2/cmake-build-release/external/Catch2"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/anders/CLionProjects/untitled2/cmake-build-release/external/Catch2/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/anders/CLionProjects/untitled2/cmake-build-release/external/Catch2/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/anders/CLionProjects/untitled2/cmake-build-release/external/Catch2/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/anders/CLionProjects/untitled2/cmake-build-release/external/Catch2/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="SelfTest">
+				<Option output="/home/anders/CLionProjects/untitled2/builds/SelfTest" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/anders/CLionProjects/untitled2/builds"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/anders/CLionProjects/untitled2/external/Catch2/single_include"/>
+					<Add directory="/home/anders/CLionProjects/untitled2/external/Catch2/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/../../../../include/c++/7.2.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/../../../../include/c++/7.2.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/../../../../include/c++/7.2.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/anders/CLionProjects/untitled2/cmake-build-release/external/Catch2/Makefile&quot;  VERBOSE=1 SelfTest"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/anders/CLionProjects/untitled2/cmake-build-release/external/Catch2/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/anders/CLionProjects/untitled2/cmake-build-release/external/Catch2/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/anders/CLionProjects/untitled2/cmake-build-release/external/Catch2/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="SelfTest/fast">
+				<Option output="/home/anders/CLionProjects/untitled2/builds/SelfTest" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/anders/CLionProjects/untitled2/builds"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/anders/CLionProjects/untitled2/external/Catch2/single_include"/>
+					<Add directory="/home/anders/CLionProjects/untitled2/external/Catch2/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/../../../../include/c++/7.2.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/../../../../include/c++/7.2.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/../../../../include/c++/7.2.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/anders/CLionProjects/untitled2/cmake-build-release/external/Catch2/Makefile&quot;  VERBOSE=1 SelfTest/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/anders/CLionProjects/untitled2/cmake-build-release/external/Catch2/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/anders/CLionProjects/untitled2/cmake-build-release/external/Catch2/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/anders/CLionProjects/untitled2/cmake-build-release/external/Catch2/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/catch.hpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/catch_with_main.hpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/external/clara.hpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_approx.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_approx.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_assertionhandler.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_assertionhandler.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_assertioninfo.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_assertionresult.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_assertionresult.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_benchmark.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_benchmark.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_capture.hpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_capture_matchers.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_capture_matchers.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_clara.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_commandline.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_commandline.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_common.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_common.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_compiler_capabilities.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_config.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_config.hpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_console_colour.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_console_colour.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_context.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_context.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_debug_console.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_debug_console.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_debugger.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_debugger.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_decomposer.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_decomposer.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_default_main.hpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_enforce.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_errno_guard.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_errno_guard.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_exception_translator_registry.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_exception_translator_registry.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_external_interfaces.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_fatal_condition.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_fatal_condition.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_impl.hpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_interfaces_capture.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_interfaces_capture.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_interfaces_config.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_interfaces_config.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_interfaces_exception.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_interfaces_exception.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_interfaces_registry_hub.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_interfaces_registry_hub.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_interfaces_reporter.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_interfaces_reporter.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_interfaces_runner.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_interfaces_runner.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_interfaces_tag_alias_registry.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_interfaces_testcase.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_interfaces_testcase.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_leak_detector.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_leak_detector.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_list.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_list.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_matchers.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_matchers.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_matchers_floating.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_matchers_floating.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_matchers_string.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_matchers_string.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_matchers_vector.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_message.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_message.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_objc.hpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_objc_arc.hpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_option.hpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_platform.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_random_number_generator.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_random_number_generator.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_reenable_warnings.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_registry_hub.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_reporter_registrars.hpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_reporter_registry.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_reporter_registry.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_result_type.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_result_type.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_run_context.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_run_context.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_section.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_section.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_section_info.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_section_info.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_session.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_session.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_startup_exception_registry.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_startup_exception_registry.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_stream.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_stream.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_string_manip.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_string_manip.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_stringref.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_stringref.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_suppress_warnings.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_tag_alias.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_tag_alias.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_tag_alias_autoregistrar.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_tag_alias_autoregistrar.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_tag_alias_registry.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_tag_alias_registry.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_test_case_info.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_test_case_info.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_test_case_registry_impl.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_test_case_registry_impl.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_test_case_tracker.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_test_case_tracker.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_test_registry.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_test_registry.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_test_spec.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_test_spec.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_test_spec_parser.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_test_spec_parser.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_text.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_timer.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_timer.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_tostring.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_tostring.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_totals.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_totals.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_version.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_version.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_wildcard_pattern.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_wildcard_pattern.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_windows_h_proxy.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_xmlwriter.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/internal/catch_xmlwriter.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/reporters/catch_reporter_automake.hpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/reporters/catch_reporter_bases.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/reporters/catch_reporter_bases.hpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/reporters/catch_reporter_compact.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/reporters/catch_reporter_console.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/reporters/catch_reporter_junit.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/reporters/catch_reporter_multi.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/reporters/catch_reporter_multi.h">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/reporters/catch_reporter_tap.hpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/reporters/catch_reporter_teamcity.hpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/include/reporters/catch_reporter_xml.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/IntrospectiveTests/CmdLine.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/IntrospectiveTests/PartTracker.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/IntrospectiveTests/String.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/IntrospectiveTests/TagAlias.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/IntrospectiveTests/Xml.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/SurrogateCpps/catch_console_colour.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/SurrogateCpps/catch_debugger.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/SurrogateCpps/catch_interfaces_reporter.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/SurrogateCpps/catch_option.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/SurrogateCpps/catch_stream.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/SurrogateCpps/catch_test_case_tracker.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/SurrogateCpps/catch_test_spec.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/SurrogateCpps/catch_xmlwriter.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/TestMain.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/UsageTests/Approx.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/UsageTests/BDD.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/UsageTests/Benchmark.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/UsageTests/Class.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/UsageTests/Compilation.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/UsageTests/Condition.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/UsageTests/Decomposition.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/UsageTests/EnumToString.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/UsageTests/Exception.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/UsageTests/Matchers.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/UsageTests/Message.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/UsageTests/Misc.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/UsageTests/ToStringChrono.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/UsageTests/ToStringGeneral.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/UsageTests/ToStringPair.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/UsageTests/ToStringTuple.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/UsageTests/ToStringVector.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/UsageTests/ToStringWhich.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/UsageTests/Tricky.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/projects/SelfTest/UsageTests/VariadicMacros.tests.cpp">
+			<Option target="SelfTest"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\external\"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\external\Catch2\"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/catch.pc.in">
+			<Option virtualFolder="CMake Files\external\Catch2\"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\external\Catch2\"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/external/Catch2/catch.pc.in">
+			<Option virtualFolder="CMake Files\external\Catch2\"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/engine/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\engine\"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/engine/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\engine\src\"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/engine/test/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\engine\test\"/>
+		</Unit>
+		<Unit filename="/home/anders/CLionProjects/untitled2/engine/test/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\engine\test\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

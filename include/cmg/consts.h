@@ -3,6 +3,9 @@
 namespace cmg {
 namespace consts {
 
+// move generation
+constexpr uint_fast16_t MAXMOVES{256};
+
 // move constants
 constexpr uint_fast16_t FLAG_PROMOTION {0b1000000000000000};
 constexpr uint_fast16_t FLAG_CAPTURE   {0b0100000000000000};

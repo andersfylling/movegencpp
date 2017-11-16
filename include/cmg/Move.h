@@ -112,11 +112,6 @@ class Move
     return ((this->move & RANGE_FLAG) == (FLAG_SPECIAL0 | FLAG_CAPTURE));
   }
   
-  constexpr bool isEPMove() const
-  {
-    return (this->move & RANGE_FLAG) == (FLAG_CAPTURE | FLAG_SPECIAL1);
-  }
-  
   /**
    * When the moving piece has caused check.
    * @return true on check
