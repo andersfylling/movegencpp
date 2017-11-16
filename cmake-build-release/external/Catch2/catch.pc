@@ -1,9 +1,0 @@
-prefix=/usr/local
-exec_prefix=${prefix}
-
-Name: Catch
-Description: Testing library for C++
-Requires:
-Version: 2.0.1
-Libs:
-Cflags: -I${prefix}//include

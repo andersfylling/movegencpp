@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC  -std=c++17 -Wall -Wextra -fPIC  -std=c++17 -Wall -Wextra -fPIC -Wno-unused-variable -O3 -flto -DNDEBUG  -shared -Wl,-soname,libcmg.so -o libcmg.so CMakeFiles/cmg.dir/MoveGen.cpp.o 
