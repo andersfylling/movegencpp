@@ -3,9 +3,11 @@ IS a Chess project written in C++17. It aims to create a Move Generator with C++
 
 This generates moves that are stored in a `uint_fast16_t`. These can be iterated after generation.
 ```c++
-::cmg::MoveGen moveGen{}; // default board layout
+const bool white = true;
+::cmg::MoveGen<white> moveGen{}; // default board layout
 moveGen.generatePawnSinglePush(); // This method is not public. This is just for explaining the behavior.
 
+// For every generated move, print move, from, to, and flags
 for (const auto move : moveGen) {
   ::cmg::Move m{move};
   const auto flags{::cmg::utils::flagsToBinary(m.getFlags())};
