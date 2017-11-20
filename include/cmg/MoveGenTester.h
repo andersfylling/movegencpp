@@ -36,9 +36,9 @@ class MoveGenTester
     return this->moveGen.generatePawnSinglePush();
   }
   
-  constexpr uint_fast64_t generatePawnDoublePush()
+  constexpr uint_fast64_t generatePawnDoublePush(const uint_fast64_t pawns = 16711680ull)
   {
-    return this->moveGen.generatePawnDoublePush();
+    return this->moveGen.generatePawnDoublePush(pawns);
   }
  private:
   MoveGen<WHITE> moveGen;

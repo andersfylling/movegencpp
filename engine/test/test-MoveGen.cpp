@@ -254,7 +254,7 @@ TEST_CASE("Iterator pattern", "[MoveGen]") {
 TEST_CASE("Single pawn push", "[MoveGenTester") {
   cmg::MoveGenTester<white> mgt{};
   
-  mgt.generatePawnSinglePush();
+  std::cout << mgt.generatePawnSinglePush() << std::endl;
   std::array<uint_fast16_t, 8> moves{0};
   std::cout << "Printing moves(single)\n";
   const auto& moveGen = mgt.getMoveGen();
@@ -269,7 +269,7 @@ TEST_CASE("Single pawn push", "[MoveGenTester") {
 TEST_CASE("Double pawn push", "[MoveGenTester") {
   cmg::MoveGenTester<white> mgt{};
   
-  mgt.generatePawnDoublePush();
+  mgt.generatePawnDoublePush(16711680ull); // default positions after single pawn movement
   std::array<uint_fast16_t, 8> moves{0};
   std::cout << "Printing moves(double pawn)\n";
   const auto& moveGen = mgt.getMoveGen();

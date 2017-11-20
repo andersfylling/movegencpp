@@ -77,7 +77,8 @@ class MoveGen
   
   constexpr uint_fast64_t generatePawnMoves()
   {
-    return this->generatePawnSinglePush() | this->generatePawnDoublePush();
+    uint_fast64_t cache = this->generatePawnSinglePush();
+    return cache | this->generatePawnDoublePush(cache);
   }
   
   // Iterator pattern
@@ -132,6 +133,7 @@ class MoveGen
     } else {
       to = (pawns >> 8) & (~this->state.taken); // move all pawns down one square
     }
+    uint64_t cache{to};
     
     // remove promotion pieces
     to ^= this->generatePromotions(to);
@@ -148,24 +150,25 @@ class MoveGen
       this->moves[this->movesIndex++] = this->move.getMove();
     }
     
-    return to;
+    return cache;
   } // end pawn generation
   
   /**
    * Generate legal double push pawn moves
    *
+   * @param pawns All pawn positions after single legal push (move). eg. 16711680ull
    * @return All the new pawn positions
    */
-  constexpr uint_fast64_t generatePawnDoublePush()
+  constexpr uint_fast64_t generatePawnDoublePush(const uint_fast64_t pawns)
   {
-    const uint_fast64_t pawns{this->state.pieces[WHITE * 6]};
-    uint64_t to{0ull};
+    uint_fast64_t to{0ull};
     
     if constexpr (WHITE) {
-      to = ((pawns & 0xff00) << 16) & ~(this->state.taken | (this->state.taken << 8));
+      to = ((pawns & 0xff0000) << 8) & ~(this->state.taken);
     } else {
-      to = ((pawns & 0xff00) >> 16) & ~(this->state.taken | (this->state.taken >> 8));
+      to = ((pawns & 0xff0000000000) >> 8) & ~(this->state.taken);
     }
+    uint_fast64_t cache{to};
     this->move.setFlags(0b0001);
     for (uint_fast8_t i = utils::LSB(to); i != 0; i = utils::NLSB(to, i)) {
       if constexpr (WHITE) {
@@ -177,7 +180,7 @@ class MoveGen
       this->moves[this->movesIndex++] = this->move.getMove();
     }
     
-    return to;
+    return cache;
   }
   
   /**
