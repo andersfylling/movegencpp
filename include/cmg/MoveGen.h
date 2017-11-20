@@ -4,22 +4,47 @@
 #include "cmg/consts.h"
 #include "cmg/Move.h"
 #include "cmg/utils.h"
+#include "cmg/consts.h"
 
 namespace cmg {
 struct gameState{
-  std::array<uint_fast64_t, 2> colours{0ull};
+  std::array<uint_fast64_t, 2> colours{
+      consts::black::PIECES,
+      consts::white::PIECES
+  };
   uint_fast64_t taken{0ull};
   
   // same as version 2, just easier to loop through
-  std::array<uint_fast64_t , 12> pieces = {{0}}; // fixed positions
-  uint_fast8_t info = 0b00011111; //0:blackkingcast, 1:whitekingcast, 2:blackqueencast, 3:whitequeencast, 4:white
-  uint_fast8_t ep = 0;
+  std::array<uint_fast64_t , 12> pieces{
+      consts::black::PAWN,
+      consts::black::ROOK,
+      consts::black::KNIGHT,
+      consts::black::BISHOP,
+      consts::black::QUEEN,
+      consts::black::KING,
+    
+      consts::white::PAWN,
+      consts::white::ROOK,
+      consts::white::KNIGHT,
+      consts::white::BISHOP,
+      consts::white::QUEEN,
+      consts::white::KING
+  };
+  uint_fast8_t info{0b00011111}; //0:blackkingcast, 1:whitekingcast, 2:blackqueencast, 3:whitequeencast, 4:white
+  uint_fast8_t ep{0};
 };
 
+#ifdef CMG_UNITTEST
+template<bool>
+class MoveGenTester;
+#endif
 
 template<bool WHITE>
 class MoveGen
 {
+#ifdef CMG_UNITTEST
+  friend class MoveGenTester<WHITE>;
+#endif
  public:
   constexpr MoveGen()
       : state{} // TODO: default game board
@@ -45,16 +70,49 @@ class MoveGen
     return this->moves[index];
   }
   
-  constexpr uint_fast16_t getNrOfMoves() const
+  constexpr uint_fast16_t size() const
   {
     return this->movesIndex;
   }
-  
   
   constexpr uint_fast64_t generatePawnMoves()
   {
     return this->generatePawnSinglePush() | this->generatePawnDoublePush();
   }
+  
+  // Iterator pattern
+  class const_iterator
+  {
+    const MoveGen &mg;
+    size_t m_Index;
+   public:
+    constexpr const_iterator(const MoveGen& mg) : mg(mg), m_Index(0) {}
+    constexpr const_iterator(const MoveGen& mg, const size_t nSize) : mg(mg), m_Index(nSize) {}
+    constexpr const_iterator(const const_iterator& other) : mg(other.mg), m_Index(other.m_Index) {}
+    constexpr void operator++() { m_Index++; }
+    constexpr void operator--() { m_Index++; }
+    constexpr bool operator != (const const_iterator& other) const { return m_Index != other.m_Index; }
+    constexpr uint_fast16_t  operator *() const { return this->mg.getMove(m_Index); }
+  };
+  
+  constexpr const_iterator begin() const
+  {
+    const_iterator it(*this);
+    return it;
+  }
+  
+  constexpr const_iterator end() const
+  {
+    const_iterator it(*this, this->size());
+    return it;
+  }
+ 
+ private:
+ protected:
+  ::cmg::gameState state;
+  ::cmg::Move move;
+  std::array<uint_fast16_t, ::cmg::consts::MAXMOVES> moves;
+  uint_fast16_t movesIndex;
   
   /**
    * Generate pawn forward moves and attacks
@@ -74,13 +132,13 @@ class MoveGen
     } else {
       to = (pawns >> 8) & (~this->state.taken); // move all pawns down one square
     }
-      
+    
     // remove promotion pieces
     to ^= this->generatePromotions(to);
-  
+    
     // single push
     this->move.setFlags(0b0000);
-    for (uint_fast8_t i = utils::LSB(to); i != 0; i = utils::NSB(to, i)) {
+    for (uint_fast8_t i = utils::LSB(to); i != 0; i = utils::NLSB(to, i)) {
       if constexpr (WHITE) {
         this->move.setFrom(i - 8);
       } else {
@@ -109,7 +167,7 @@ class MoveGen
       to = ((pawns & 0xff00) >> 16) & ~(this->state.taken | (this->state.taken >> 8));
     }
     this->move.setFlags(0b0001);
-    for (uint_fast8_t i = utils::LSB(to); i != 0; i = utils::NSB(to, i)) {
+    for (uint_fast8_t i = utils::LSB(to); i != 0; i = utils::NLSB(to, i)) {
       if constexpr (WHITE) {
         this->move.setFrom(i - 16);
       } else {
@@ -131,7 +189,7 @@ class MoveGen
   constexpr uint_fast64_t generatePromotions(const uint_fast64_t pawns)
   {
     uint_fast64_t promotions{pawns & 0xff000000000000ff};
-    for (uint_fast8_t i = utils::LSB(promotions); i != 0; i = utils::NSB(promotions, i)) {
+    for (uint_fast8_t i = utils::LSB(promotions); i != 0; i = utils::NLSB(promotions, i)) {
       if constexpr (WHITE) {
         this->move.setFrom(i - 8);
       } else {
@@ -146,63 +204,5 @@ class MoveGen
     
     return pawns & 0xff000000000000ff;
   }
-  
-  // Iterator pattern
-  class iterator
-  {
-    const MoveGen &mg;
-    size_t m_Index;
-   public:
-    constexpr iterator(const MoveGen& mg)
-        : mg(mg)
-        , m_Index(0)
-    {}
-    constexpr iterator(const MoveGen& mg, const size_t nSize)
-        : mg(mg)
-        , m_Index(nSize)
-    {}
-    constexpr iterator(const iterator& other)
-        : mg(other.mg)
-        , m_Index(other.m_Index)
-    {}
-    constexpr void operator++()
-    {
-      m_Index++;
-    }
-  
-    constexpr void operator--()
-    {
-      m_Index++;
-    }
-  
-    constexpr bool operator != (const iterator& other) const
-    {
-      return m_Index != other.m_Index;
-    }
-  
-    constexpr int operator *() const
-    {
-      return this->mg.getMove(m_Index);
-    }
-  };
-  
-  constexpr iterator begin() const
-  {
-    iterator it(*this);
-    return it;
-  }
-  
-  constexpr iterator end() const
-  {
-    iterator it(*this, this->getNrOfMoves());
-    return it;
-  }
- 
- protected:
-  ::cmg::gameState state;
-  ::cmg::Move move;
-  std::array<uint_fast16_t, ::cmg::consts::MAXMOVES> moves;
-  uint_fast16_t movesIndex;
-  
 };
 }

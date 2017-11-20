@@ -1,6 +1,7 @@
 #include "catch.hpp"
 
-#include "cmg/MoveGen.h"
+#include "cmg/MoveGenTester.h"
+#include "cmg/utils.h"
 
 #include <vector>
 #include <string>
@@ -236,17 +237,46 @@ void validateMoveGen() {
 }
 
 #endif
+constexpr static bool white = true;
+constexpr static bool black = false;
 
 
 
 TEST_CASE("Iterator pattern", "[MoveGen]") {
-  constexpr bool white = true;
-  constexpr bool black = false;
-  
   cmg::MoveGen<white> moveGen{};
   
   int i = 0;
   for (auto move : moveGen) {
     REQUIRE(move == i++);
+  }
+}
+
+TEST_CASE("Single pawn push", "[MoveGenTester") {
+  cmg::MoveGenTester<white> mgt{};
+  
+  mgt.generatePawnSinglePush();
+  std::array<uint_fast16_t, 8> moves{0};
+  std::cout << "Printing moves(single)\n";
+  const auto& moveGen = mgt.getMoveGen();
+  for (const auto move : moveGen) {
+    //REQUIRE(move == i++);
+    cmg::Move m{move};
+    const auto flags = ::cmg::utils::flagsToBinary(m.getFlags());
+    std::printf("%lu => from{%2u}, to{%2u}, flags{%s}\n", move, m.getFrom(), m.getTo(), flags.c_str());
+  }
+}
+
+TEST_CASE("Double pawn push", "[MoveGenTester") {
+  cmg::MoveGenTester<white> mgt{};
+  
+  mgt.generatePawnDoublePush();
+  std::array<uint_fast16_t, 8> moves{0};
+  std::cout << "Printing moves(double pawn)\n";
+  const auto& moveGen = mgt.getMoveGen();
+  for (const auto move : moveGen) {
+    //REQUIRE(move == i++);
+    cmg::Move m{move};
+    const auto flags = ::cmg::utils::flagsToBinary(m.getFlags());
+    std::printf("%lu => from{%2u}, to{%2u}, flags{%s}\n", move, m.getFrom(), m.getTo(), flags.c_str());
   }
 }

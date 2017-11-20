@@ -21,6 +21,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -Wno-unused-variable -O3 -flto -
 
 # Third party libraries in lib
 # These are ignored if this is used as a external / sub module
+# TODO: should not discord tests if using a test flag..
 if (${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
     # External project file headers
     # set(cmg_BENCHMARK_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/external/benchmark/include")
