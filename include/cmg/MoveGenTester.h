@@ -7,7 +7,7 @@
 
 namespace cmg {
 
-template<bool WHITE>
+template<uint_fast8_t COLOR>
 class MoveGenTester
 {
  public:
@@ -26,7 +26,7 @@ class MoveGenTester
     this->state = st;
   }
   
-  constexpr MoveGen<WHITE>& getMoveGen()
+  constexpr MoveGen<COLOR>& getMoveGen()
   {
     return this->moveGen;
   }
@@ -41,7 +41,7 @@ class MoveGenTester
     return this->moveGen.generatePawnDoublePush(pawns);
   }
  private:
-  MoveGen<WHITE> moveGen;
+  MoveGen<COLOR> moveGen;
   gameState state;
  protected:
 };

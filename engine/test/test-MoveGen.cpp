@@ -237,8 +237,8 @@ void validateMoveGen() {
 }
 
 #endif
-constexpr static bool white = true;
-constexpr static bool black = false;
+constexpr static uint_fast8_t white = 1;
+constexpr static uint_fast8_t black = 0;
 
 
 
@@ -253,30 +253,32 @@ TEST_CASE("Iterator pattern", "[MoveGen]") {
 
 TEST_CASE("Single pawn push", "[MoveGenTester") {
   cmg::MoveGenTester<white> mgt{};
+  mgt.generatePawnSinglePush();
   
-  std::cout << mgt.generatePawnSinglePush() << std::endl;
-  std::array<uint_fast16_t, 8> moves{0};
-  std::cout << "Printing moves(single)\n";
+  std::array<uint_fast16_t, 8> wants{
+      528, 593, 658, 723, 788, 853,
+      918, 983
+  };
+  
+  int i = 0;
   const auto& moveGen = mgt.getMoveGen();
   for (const auto move : moveGen) {
-    //REQUIRE(move == i++);
-    cmg::Move m{move};
-    const auto flags = ::cmg::utils::flagsToBinary(m.getFlags());
-    std::printf("%lu => from{%2u}, to{%2u}, flags{%s}\n", move, m.getFrom(), m.getTo(), flags.c_str());
+    REQUIRE(move == wants[i++]);
   }
 }
 
 TEST_CASE("Double pawn push", "[MoveGenTester") {
   cmg::MoveGenTester<white> mgt{};
-  
   mgt.generatePawnDoublePush(16711680ull); // default positions after single pawn movement
-  std::array<uint_fast16_t, 8> moves{0};
-  std::cout << "Printing moves(double pawn)\n";
+  
+  std::array<uint_fast16_t, 8> wants{
+      4632, 4697, 4762, 4827, 4892, 4957,
+      5022, 5087
+  };
+  
+  int i = 0;
   const auto& moveGen = mgt.getMoveGen();
   for (const auto move : moveGen) {
-    //REQUIRE(move == i++);
-    cmg::Move m{move};
-    const auto flags = ::cmg::utils::flagsToBinary(m.getFlags());
-    std::printf("%lu => from{%2u}, to{%2u}, flags{%s}\n", move, m.getFrom(), m.getTo(), flags.c_str());
+    REQUIRE(move == wants[i++]);
   }
 }
