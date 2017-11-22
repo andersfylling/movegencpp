@@ -31,6 +31,11 @@ class MoveGenTester
     return this->moveGen;
   }
   
+  constexpr uint_fast16_t size()
+  {
+    return this->moveGen.size();
+  }
+  
   constexpr uint_fast64_t generatePawnSinglePush()
   {
     return this->moveGen.generatePawnSinglePush();
@@ -39,6 +44,22 @@ class MoveGenTester
   constexpr uint_fast64_t generatePawnDoublePush(const uint_fast64_t pawns = 16711680ull)
   {
     return this->moveGen.generatePawnDoublePush(pawns);
+  }
+  
+  constexpr uint_fast64_t generatePawnRightAttack(const uint_fast64_t pawns)
+  {
+    return this->moveGen.generatePawnRightAttack(pawns);
+  }
+  
+  constexpr uint_fast64_t generatePawnLeftAttack(const uint_fast64_t pawns)
+  {
+    return this->moveGen.generatePawnLeftAttack(pawns);
+  }
+  
+  template<uint_fast8_t DIRECTION = 0>
+  constexpr uint_fast64_t generatePromotions(const uint_fast64_t pawns = 0ull)
+  {
+    return this->moveGen.template generatePromotions<DIRECTION>(pawns);
   }
  private:
   MoveGen<COLOR> moveGen;
