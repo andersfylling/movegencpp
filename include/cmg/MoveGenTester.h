@@ -36,6 +36,11 @@ class MoveGenTester
     return this->moveGen.size();
   }
   
+  constexpr void clear()
+  {
+    this->moveGen.clear();
+  }
+  
   constexpr uint_fast64_t generatePawnSinglePush()
   {
     return this->moveGen.generatePawnSinglePush();

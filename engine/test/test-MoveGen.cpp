@@ -281,6 +281,10 @@ TEST_CASE("Double pawn push", "[MoveGenTester") {
   for (const auto move : moveGen) {
     REQUIRE(move == wants[i++]);
   }
+  
+  mgt.clear();
+  mgt.generatePawnDoublePush(16711680ull << 8);
+  REQUIRE(mgt.size() == 0);
 }
 
 TEST_CASE("Pawn attack, right", "[MoveGenTester") {
@@ -293,6 +297,7 @@ TEST_CASE("Pawn attack, right", "[MoveGenTester") {
   // put all the pawns on rank 6, with hostiles on full rank 7
   mgt.generatePawnRightAttack(0xff0000000000);
   REQUIRE(mgt.size() == 7);
+  //TODO en passant
 }
 
 TEST_CASE("Pawn attack, left", "[MoveGenTester") {
@@ -305,6 +310,8 @@ TEST_CASE("Pawn attack, left", "[MoveGenTester") {
   // put all the pawns on rank 6, with hostiles on full rank 7
   mgt.generatePawnLeftAttack(0xff0000000000);
   REQUIRE(mgt.size() == 7);
+  
+  //TODO en passant
 }
 
 TEST_CASE("Pawn promotion", "[MoveGenTester") {
@@ -313,4 +320,24 @@ TEST_CASE("Pawn promotion", "[MoveGenTester") {
   // try with no promotions
   mgt.template generatePromotions<0>(16711680ull);
   REQUIRE(mgt.size() == 0);
+  
+  mgt.template generatePromotions<-8>(0x4000000000000000);
+  for(const auto move : mgt.getMoveGen()) {
+    ::cmg::Move m{move};
+    REQUIRE(m.getFlags() >= 0b1000); REQUIRE(m.getFlags() < 0b1100); // not a promotion by attack
+  }
+  
+  mgt.clear();
+  mgt.template generatePromotions<-7>(0x4000000000000000);
+  for(const auto move : mgt.getMoveGen()) {
+    ::cmg::Move m{move};
+    REQUIRE(m.getFlags() >= 0b1100); // a promotion by attack
+  }
+  
+  mgt.clear();
+  mgt.template generatePromotions<-9>(0x4000000000000000);
+  for(const auto move : mgt.getMoveGen()) {
+    ::cmg::Move m{move};
+    REQUIRE(m.getFlags() >= 0b1100); // a promotion by attack
+  }
 }

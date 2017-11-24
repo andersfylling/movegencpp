@@ -88,6 +88,11 @@ class MoveGen
     return this->movesIndex;
   }
   
+  constexpr void clear()
+  {
+    this->movesIndex = 0;
+  }
+  
   /**
    * Generate single push, double push, left and right attacks (including en passant).
    *
@@ -294,7 +299,7 @@ class MoveGen
     uint_fast64_t promotions{pawns & 0xff000000000000ff};
     
     // single push has a FROM of 1. since this is an offset.
-    uint_fast8_t flag{FROM > 1 ? 0b1100 : 0b1000};
+    uint_fast8_t flag{FROM != 8 && FROM != -8 ? 0b1100 : 0b1000};
     
     for (uint_fast8_t i = utils::LSB(promotions); i != 0; i = utils::NLSB(promotions, i)) {
       this->move.setFrom(i + FROM);
