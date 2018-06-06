@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.9)
-project(cmg VERSION 0.0.1 DESCRIPTION "Chess Move Generator written in C++17")
+project(movegencpp VERSION 0.0.1 DESCRIPTION "Chess Move Generator written in C++17")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 if(MSVC)
@@ -19,39 +19,43 @@ endif()
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -g")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -Wno-unused-variable -O3 -flto -DNDEBUG")
 
-# Third party libraries in lib
-# These are ignored if this is used as a external / sub module
-# TODO: should not discord tests if using a test flag..
-if (${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
-    # External project file headers
-    # set(cmg_BENCHMARK_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/external/benchmark/include")
-    include_directories("${CMAKE_CURRENT_SOURCE_DIR}/external/Catch2/single_include")
-
-    add_subdirectory(external)
-endif()
-
-
 # Header files
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
 
+# Third party libraries in lib
+# These are ignored if this is used as a dep / sub module
+if (${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
+    # External project file headers
+    include_directories(dep/Catch2)
+
+    # also run the tests
+    add_subdirectory(test)
+
+    # and benchmarks
+    add_subdirectory(benchmark)
+endif()
+
+
+
+
 # Our source code
-add_subdirectory(engine)
+#add_subdirectory(engine)
 
 # Library files to compile
-#add_library(cmg SHARED
+#add_library(movegencpp SHARED
 #        src/library.cpp
 #        )
 
-#set_target_properties(cmg PROPERTIES VERSION ${PROJECT_VERSION})
+#set_target_properties(movegencpp PROPERTIES VERSION ${PROJECT_VERSION})
 
-#configure_file(cmg.pc.in cmg.pc @ONLY)
-#target_include_directories(cmg PRIVATE include)
-#target_include_directories(cmg PRIVATE src)
+#configure_file(movegencpp.pc.in movegencpp.pc @ONLY)
+#target_include_directories(movegencpp PRIVATE include)
+#target_include_directories(movegencpp PRIVATE src)
 
 #include(GNUInstallDirs)
 
-#install(TARGETS cmg
+#install(TARGETS movegencpp
 #        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 #        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
-#install(FILES ${CMAKE_BINARY_DIR}/cmg.pc DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig)
+#install(FILES ${CMAKE_BINARY_DIR}/movegencpp.pc DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig)
