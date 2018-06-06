@@ -34,28 +34,3 @@ if (${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
     # and benchmarks
     add_subdirectory(benchmark)
 endif()
-
-
-
-
-# Our source code
-#add_subdirectory(engine)
-
-# Library files to compile
-#add_library(movegencpp SHARED
-#        src/library.cpp
-#        )
-
-#set_target_properties(movegencpp PROPERTIES VERSION ${PROJECT_VERSION})
-
-#configure_file(movegencpp.pc.in movegencpp.pc @ONLY)
-#target_include_directories(movegencpp PRIVATE include)
-#target_include_directories(movegencpp PRIVATE src)
-
-#include(GNUInstallDirs)
-
-#install(TARGETS movegencpp
-#        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-#        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-
-#install(FILES ${CMAKE_BINARY_DIR}/movegencpp.pc DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig)
