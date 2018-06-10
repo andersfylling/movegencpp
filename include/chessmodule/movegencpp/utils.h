@@ -48,5 +48,9 @@ constexpr bool isset(const uint_fast64_t board, const uint_fast8_t index)
   return (board & (1ull << index)) != 0;
 }
 
+constexpr uint64_t indexToBitboard (const uint8_t index) {
+  return 1ull << index;
+}
+
 } // utils
 } // movegencpp
