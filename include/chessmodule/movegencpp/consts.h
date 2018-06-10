@@ -15,8 +15,24 @@ constexpr uint_fast16_t RANGE_FLAG     {0b1111000000000000};
 constexpr uint_fast16_t RANGE_FROM     {0b0000111111000000};
 constexpr uint_fast16_t RANGE_TO       {0b0000000000111111};
 
-// piece index
+constexpr uint NR_OF_COLORS{2}; // black + white
+constexpr uint NR_OF_BLACK_PIECE_TYPES{6};
+constexpr uint NR_OF_WHITE_PIECE_TYPES{6};
+constexpr uint NR_OF_ALL_PIECE_TYPES{NR_OF_BLACK_PIECE_TYPES + NR_OF_WHITE_PIECE_TYPES};
 
+constexpr uint NR_OF_WHITE_PAWNS{8};
+constexpr uint NR_OF_BLACK_PAWNS{8};
+
+// piece index
+constexpr int ONE_ROW_UP{8};
+constexpr int TWO_ROWS_UP{8};
+constexpr uint MOVE_ONE_ROW_UP{8};
+constexpr uint MOVE_TWO_ROWS_UP{16};
+
+constexpr int ONE_ROW_DOWN{-8};
+constexpr int TWO_ROWS_DOWN{-16};
+constexpr uint MOVE_ONE_ROW_DOWN{8};
+constexpr uint MOVE_TWO_ROWS_DOWN{16};
 
 //! Bitboards default positions
 //! For all the different black pieces

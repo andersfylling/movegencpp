@@ -6,28 +6,30 @@
 #include <chessmodule/movegencpp/utils.h>
 
 namespace cmg {
+using namespace consts;
+
 struct gameState{
-  std::array<uint_fast64_t, 2> colours{
-      consts::black::PIECES,
-      consts::white::PIECES
+  std::array<uint_fast64_t, NR_OF_COLORS> colours{
+      black::PIECES,
+      white::PIECES
   };
   uint_fast64_t taken{0ull};
   
   // same as version 2, just easier to loop through
-  std::array<uint_fast64_t , 12> pieces{
-      consts::black::PAWN,
-      consts::black::ROOK,
-      consts::black::KNIGHT,
-      consts::black::BISHOP,
-      consts::black::QUEEN,
-      consts::black::KING,
+  std::array<uint_fast64_t , NR_OF_ALL_PIECE_TYPES> pieces{
+      black::PAWN,
+      black::ROOK,
+      black::KNIGHT,
+      black::BISHOP,
+      black::QUEEN,
+      black::KING,
     
-      consts::white::PAWN,
-      consts::white::ROOK,
-      consts::white::KNIGHT,
-      consts::white::BISHOP,
-      consts::white::QUEEN,
-      consts::white::KING
+      white::PAWN,
+      white::ROOK,
+      white::KNIGHT,
+      white::BISHOP,
+      white::QUEEN,
+      white::KING
   };
   uint_fast8_t info{0b00011111}; //0:blackkingcast, 1:whitekingcast, 2:blackqueencast, 3:whitequeencast, 4:white
   uint_fast8_t ep{0};
@@ -100,7 +102,7 @@ class MoveGen
   constexpr uint_fast64_t generatePawnMoves()
   {
     
-    uint_fast64_t pawns = this->state.pieces[COLOR * 6];
+    uint_fast64_t pawns = this->state.pieces[COLOR * NR_OF_WHITE_PIECE_TYPES];
     
     // attack left
     uint_fast64_t attacksLeft = this->generatePawnLeftAttack(pawns);
@@ -160,7 +162,7 @@ class MoveGen
  protected:
   ::cmg::gameState state;
   ::cmg::Move move;
-  std::array<uint_fast16_t, ::cmg::consts::MAXMOVES> moves;
+  std::array<uint_fast16_t, ::cmg::MAXMOVES> moves;
   uint_fast16_t movesIndex;
   
   /**
@@ -171,13 +173,13 @@ class MoveGen
    */
   constexpr uint_fast64_t generatePawnSinglePush()
   {
-    const uint_fast64_t pawns{this->state.pieces[COLOR * 6]};
+    const uint_fast64_t pawns{this->state.pieces[COLOR * NR_OF_WHITE_PIECE_TYPES]};
     uint64_t to{0ull};
     
     if constexpr (COLOR) {
-      to = (pawns << 8) & (~this->state.taken); // move all pawns up one square
+      to = (pawns << NR_OF_WHITE_PAWNS) & (~this->state.taken); // move all pawns up one square
     } else {
-      to = (pawns >> 8) & (~this->state.taken); // move all pawns down one square
+      to = (pawns >> NR_OF_BLACK_PAWNS) & (~this->state.taken); // move all pawns down one square
     }
     uint64_t cache{to};
     
@@ -188,9 +190,9 @@ class MoveGen
     this->move.setFlags(0b0000);
     for (uint_fast8_t i = utils::LSB(to); i != 0; i = utils::NLSB(to, i)) {
       if constexpr (COLOR) {
-        this->move.setFrom(i - 8);
+        this->move.setFrom(i + ONE_ROW_DOWN);
       } else {
-        this->move.setFrom(i + 8);
+        this->move.setFrom(i + ONE_ROW_UP);
       }
       this->move.setTo(i);
       this->moves[this->movesIndex++] = this->move.getMove();
@@ -212,17 +214,17 @@ class MoveGen
     uint_fast64_t to{0ull};
     
     if constexpr (COLOR) {
-      to = ((pawns & 0xff0000) << 8) & ~(this->state.taken);
+      to = ((pawns & 0xff0000) << MOVE_ONE_ROW_UP) & ~(this->state.taken);
     } else {
-      to = ((pawns & 0xff0000000000) >> 8) & ~(this->state.taken);
+      to = ((pawns & 0xff0000000000) >> MOVE_ONE_ROW_DOWN) & ~(this->state.taken);
     }
     uint_fast64_t cache{to};
     this->move.setFlags(0b0001);
     for (uint_fast8_t i = utils::LSB(to); i != 0; i = utils::NLSB(to, i)) {
       if constexpr (COLOR) {
-        this->move.setFrom(i - 16);
+        this->move.setFrom(i + TWO_ROWS_DOWN);
       } else {
-        this->move.setFrom(i + 16);
+        this->move.setFrom(i + TWO_ROWS_UP);
       }
       this->move.setTo(i);
       this->moves[this->movesIndex++] = this->move.getMove();
@@ -246,7 +248,7 @@ class MoveGen
     uint_fast64_t cache{attacks};
   
     // promotions
-    constexpr std::array<uint_fast8_t, 2> directions{-7, 9};
+    constexpr std::array<uint_fast8_t, NR_OF_COLORS> directions{-7, 9};
     attacks ^= this->generatePromotions<directions[COLOR]>(attacks);
     this->move.setFlags(0b0100); //capture
     for (uint_fast8_t i = utils::LSB(attacks); i != 0; i = utils::NLSB(attacks, i)) {
@@ -273,7 +275,7 @@ class MoveGen
     uint_fast64_t cache{attacks};
     
     // promotions
-    constexpr std::array<uint_fast8_t, 2> directions{-9, 7};
+    constexpr std::array<uint_fast8_t, NR_OF_COLORS> directions{-9, 7};
     attacks ^= this->generatePromotions<directions[COLOR]>(attacks);
     this->move.setFlags(0b0100); //capture
     for (uint_fast8_t i = utils::LSB(attacks); i != 0; i = utils::NLSB(attacks, i)) {
@@ -298,7 +300,7 @@ class MoveGen
     uint_fast64_t promotions{pawns & 0xff000000000000ff};
     
     // single push has a FROM of 1. since this is an offset.
-    uint_fast8_t flag{FROM != 8 && FROM != -8 ? 0b1100 : 0b1000};
+    uint_fast8_t flag{FROM != 8 && FROM != -8 ? 0b1100 : 0b1000}; // TODO: review 8
     
     for (uint_fast8_t i = utils::LSB(promotions); i != 0; i = utils::NLSB(promotions, i)) {
       this->move.setFrom(i + FROM);
